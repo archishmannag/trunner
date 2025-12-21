@@ -1,0 +1,14 @@
+CompileFlags:
+  Add:
+    - "-std=c++23"
+    - "-stdlib=libstdc++"
+    - "-Wall"
+    - "-Wextra"
+    - "-Wpedantic"
+  Remove:
+    - "-W*"
+    - "-w"
+
+Index:
+  Background: Build
+  StandardLibrary: Yes

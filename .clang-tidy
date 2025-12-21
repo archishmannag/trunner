@@ -1,0 +1,99 @@
+---
+# Complete clang-tidy configuration for modern C++23/C++2b OpenGL project
+Checks: >
+  *,
+  -fuchsia-*,
+  -google-*,
+  -zircon-*,
+  -abseil-*,
+  modernize-use-trailing-return-type,
+  -llvm-header-guard,
+  -llvmlibc-*,
+  -altera-*,
+  -hicpp-special-member-functions,
+  -cppcoreguidelines-special-member-functions,
+  -misc-non-private-member-variables-in-classes,
+  -readability-named-parameter,
+  -readability-magic-numbers,
+  -cppcoreguidelines-avoid-magic-numbers,
+  -cppcoreguidelines-pro-type-union-access,
+  -cppcoreguidelines-pro-bounds-pointer-arithmetic,
+  -cppcoreguidelines-pro-type-reinterpret-cast,
+  -cppcoreguidelines-pro-type-cstyle-cast,
+  -cppcoreguidelines-pro-bounds-constant-array-index
+
+WarningsAsErrors: ""
+HeaderFilterRegex: ""
+
+CheckOptions:
+  # Class, Struct, and Enum prefixes
+  - key: readability-identifier-naming.ClassPrefix
+    value: c_
+  - key: readability-identifier-naming.StructPrefix
+    value: s_
+  - key: readability-identifier-naming.EnumPrefix
+    value: e_
+
+  # Base naming convention - snake_case
+  - key: readability-identifier-naming.ClassCase
+    value: lower_case
+  - key: readability-identifier-naming.ConstexprVariableCase
+    value: lower_case
+  - key: readability-identifier-naming.EnumCase
+    value: lower_case
+  - key: readability-identifier-naming.EnumConstantCase
+    value: upper_case
+  - key: readability-identifier-naming.FunctionCase
+    value: lower_case
+  - key: readability-identifier-naming.GlobalConstantCase
+    value: lower_case
+  - key: readability-identifier-naming.NamespaceCase
+    value: lower_case
+  - key: readability-identifier-naming.StructCase
+    value: lower_case
+  # - key: readability-identifier-naming.TemplateParameterCase
+  #   value: lower_case
+  - key: readability-identifier-naming.VariableCase
+    value: lower_case
+
+  # Member variable prefixes
+  - key: readability-identifier-naming.PrivateMemberPrefix
+    value: m_
+  - key: readability-identifier-naming.ClassMemberPrefix
+    value: s_
+
+  # Modern C++23 configuration
+  - key: readability-braces-around-statements.ShortStatementLines
+    value: 1
+
+  # Other configuration
+  - key: readability-function-cognitive-complexity.Threshold
+    value: 25
+  - key: cppcoreguidelines-explicit-virtual-functions.IgnoreDestructors
+    value: true
+  - key: modernize-loop-convert.MinConfidence
+    value: reasonable
+  - key: modernize-replace-auto-ptr.IncludeStyle
+    value: llvm
+  - key: modernize-use-nodiscard.ReplacementString
+    value: "[[nodiscard]]"
+  - key: modernize-use-override.AllowOverrideAndFinal
+    value: false
+  - key: modernize-use-equals-default.IgnoreMacros
+    value: false
+  - key: modernize-use-equals-delete.IgnoreMacros
+    value: false
+  - key: performance-move-const-arg.CheckTriviallyCopyableMove
+    value: true
+  - key: readability-implicit-bool-conversion.AllowIntegerConditions
+    value: true
+  - key: readability-implicit-bool-conversion.AllowPointerConditions
+    value: true
+  - key: performance-unnecessary-value-param.AllowedTypes
+    value: "vec2;vec3;vec4;mat2;mat3;mat4"
+  - key: cppcoreguidelines-init-variables.MathHeader
+    value: "<cmath>"
+  - key: cppcoreguidelines-narrowing-conversions.WarnOnFloatingPointNarrowingConversion
+    value: true
+
+FormatStyle: file

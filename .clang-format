@@ -1,0 +1,15 @@
+BasedOnStyle: GNU
+Standard: Latest
+IndentWidth: 4
+NamespaceIndentation: All
+AllowShortFunctionsOnASingleLine: Empty
+AllowAllParametersOfDeclarationOnNextLine: false
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLambdasOnASingleLine: Inline
+AlwaysBreakAfterReturnType: None
+AlwaysBreakAfterDefinitionReturnType: None
+SpacesInContainerLiterals: false
+AccessModifierOffset: -4
+SpaceBeforeParens: ControlStatements
+ColumnLimit: 0
+BreakBeforeBraces: Allman
