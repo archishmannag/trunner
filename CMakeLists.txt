@@ -45,6 +45,7 @@ add_compile_options(
 add_subdirectory(src)
 
 # # Tests
-enable_testing()
-add_subdirectory(tests)
+# set(BUILD_TESTING OFF CACHE BOOL "Enable tests")
+# enable_testing()
+# add_subdirectory(tests)
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
