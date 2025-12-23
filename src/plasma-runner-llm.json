@@ -1,0 +1,21 @@
+{
+    "KPlugin": {
+        "Name": "LLM Runner",
+        "Description": "Query LLMs directly from KRunner",
+        "Version": "1.0.0",
+        "License": "MIT",
+        "Category": "Utilities",
+        "Icon": "dialog-information",
+        "EnabledByDefault": true,
+        "Website": "https://github.com/archishman/krunner-llm",
+        "Authors": [
+            {
+                "Name": "Archishman",
+                "Email": "archishman@example.com"
+            }
+        ]
+    },
+    "X-KDE-ConfigModule": "kcm_krunner_llm",
+    "X-Plasma-AdvertiseSingleRunnerQueryMode": true,
+    "X-Plasma-Request-Actions-Once": false
+}

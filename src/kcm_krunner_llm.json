@@ -1,0 +1,19 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "archishman@example.com",
+                "Name": "Archishman"
+            }
+        ],
+        "Category": "Plasma/KRunner",
+        "Description": "Configure LLM Runner settings",
+        "Icon": "configure",
+        "License": "MIT",
+        "Name": "LLM Runner Configuration",
+        "Version": "1.0.0"
+    },
+    "X-KDE-Keywords": "llm,ai,krunner,openai,anthropic",
+    "X-KDE-ParentApp": "krunner",
+    "X-KDE-System-Settings-Parent-Category": "plasma"
+}
