@@ -1,7 +1,6 @@
+#!/bin/sh
+
 # Build Script for KRunner LLM Plugin
-
-#!/bin/bash
-
 set -e
 
 # Colors for output
@@ -12,18 +11,23 @@ NC='\033[0m' # No Color
 
 echo -e "${GREEN}Building KRunner LLM Plugin${NC}"
 
-# Check for required tools
-check_tool() {
-    if ! command -v $1 &> /dev/null; then
-        echo -e "${RED}Error: $1 is not installed${NC}"
-        exit 1
-    fi
-}
-
 echo "Checking dependencies..."
-check_tool cmake
-check_tool g++
-check_tool pkg-config
+deps="cmake
+g++
+pkg-config
+make
+"
+
+if command -v dnf >/dev/null 2>/dev/null; then
+        sudo dnf install -y $deps
+elif command -v zypper >/dev/null 2>/dev/null; then
+        sudo zypper install -y $deps
+elif command -v apt >/dev/null 2>/dev/null; then
+        sudo apt update -y
+        sudo apt install -y $deps
+else
+        echo 'WARNING: Could not find known package manager; dependencies may not be satisfied.'
+fi
 
 # Check GCC version
 GCC_VERSION=$(g++ -dumpversion | cut -d. -f1)
@@ -55,11 +59,8 @@ cmake .. \
 # Build
 echo -e "${GREEN}Building...${NC}"
 make -j$(nproc)
-
 echo -e "${GREEN}Build successful!${NC}"
-echo ""
-echo "To install, run:"
-echo "  cd $BUILD_DIR && sudo make install"
-echo ""
-echo "Then restart KRunner:"
-echo "  kquitapp6 krunner && krunner &"
+echo -e "${GREEN}Installing...${NC}"
+sudo make install
+echo -e "${GREEN}Install successful!${NC}"
+kquitapp6 krunner && krunner &
