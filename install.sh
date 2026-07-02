@@ -45,22 +45,12 @@ if [ -d "$BUILD_DIR" ]; then
     rm -rf "$BUILD_DIR"
 fi
 
-mkdir -p "$BUILD_DIR"
-cd "$BUILD_DIR"
-
-# Configure
+# Configure and build
 echo -e "${GREEN}Configuring with CMake...${NC}"
-cmake .. \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_CXX_COMPILER=g++ \
-    -DCMAKE_CXX_STANDARD=23
-
-# Build
+cmake -B "$BUILD_DIR"
 echo -e "${GREEN}Building...${NC}"
-make -j$(nproc)
-echo -e "${GREEN}Build successful!${NC}"
-echo -e "${GREEN}Installing...${NC}"
-sudo make install
+cmake --build "$BUILD_DIR" --parallel --config Release
+echo -e "${GREEN}Build successful!\nInstalling...${NC}"
+sudo cmake --install "$BUILD_DIR" --config Release
 echo -e "${GREEN}Install successful!${NC}"
 kquitapp6 krunner && krunner &

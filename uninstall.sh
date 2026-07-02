@@ -10,6 +10,6 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 echo -e "${GREEN}Uninstalling KRunner LLM Plugin${NC}"
-sudo make uninstall
+sudo cmake --build build --target uninstall
 echo -e "${GREEN}Uninstallation complete${NC}"
 kquitapp6 krunner && krunner &
